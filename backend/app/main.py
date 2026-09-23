@@ -3,9 +3,11 @@ from typing import Optional
 import httpx
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from .api_extra import router as extra_router
 
 app=FastAPI(title="ReachPilot AI API",version="0.2.0")
 app.add_middleware(CORSMiddleware,allow_origins=["*"],allow_methods=["*"],allow_headers=["*"])
+app.include_router(extra_router)
 
 YT="https://www.googleapis.com/youtube/v3"
 
